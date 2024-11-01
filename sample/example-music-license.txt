@@ -1,0 +1,5 @@
+The used music files "funktest.sid" and "unleash.sid" are examples from GoatTracker V2.73 
+(see http://csdb.dk/release/?id=152420) and were release as an itegral part of that GPL licensed project. 
+
+The music files "LMan - Vortex.sid" and "LMan - Confusion 2015 Remix.sid" where created by Markus Klein (see 
+http://markus-klein-artwork.de/sid/) and are used here with his specific permission.

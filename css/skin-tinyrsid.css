@@ -1,0 +1,680 @@
+@charset "iso-8859-1"
+/*
+ skin-tinyrsid: CSS based GUI for WebAudio version of Tiny'R'Sid
+ 
+    This file provides some default CSS to skin the player 
+	for use as a Wordpress plugin: All the visuals of the 
+	player can be controlled here, i.e. in order to change the
+	used sizes, icons, colors (etc) just change this CSS.
+
+ Copyright (C) 2016 Juergen Wothke
+
+ LICENSE
+ 
+ This library is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2.1 of the License, or (at
+ your option) any later version. This library is distributed in the hope
+ that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
+*/
+
+.hidden { display:none; }
+
+/* stuff used to make 'play button' pulse while playing: */
+.pulse {
+    -webkit-animation: pulse 2s linear infinite;
+    -moz-animation: pulse 2s linear infinite;
+    -ms-animation: pulse 2s linear infinite;
+    -o-animation: pulse 2s linear infinite;
+    animation: pulse 2s linear infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% { opacity: 1; }
+    12.5% { opacity: 0.875; }
+    25% { opacity: 0.75; }
+    37.5% { opacity: 0.625; }
+    50% { opacity: 0.5; }
+    62.5% { opacity: 0.625; }
+    75% { opacity: 0.75; }
+    87.5% { opacity: 0.875; }
+    100% { opacity: 1; }
+}
+
+@-moz-keyframes pulse {
+    0% { opacity: 1; }
+    12.5% { opacity: 0.875; }
+    25% { opacity: 0.75; }
+    37.5% { opacity: 0.625; }
+    50% { opacity: 0.5; }
+    62.5% { opacity: 0.625; }
+    75% { opacity: 0.75; }
+    87.5% { opacity: 0.875; }
+    100% { opacity: 1; }
+}
+
+@-ms-keyframes pulse {
+    0% { opacity: 1; }
+    12.5% { opacity: 0.875; }
+    25% { opacity: 0.75; }
+    37.5% { opacity: 0.625; }
+    50% { opacity: 0.5; }
+    62.5% { opacity: 0.625; }
+    75% { opacity: 0.75; }
+    87.5% { opacity: 0.875; }
+    100% { opacity: 1; }
+}
+
+@-o-keyframes pulse {
+    0% { opacity: 1; }
+    12.5% { opacity: 0.875; }
+    25% { opacity: 0.75; }
+    37.5% { opacity: 0.625; }
+    50% { opacity: 0.5; }
+    62.5% { opacity: 0.625; }
+    75% { opacity: 0.75; }
+    87.5% { opacity: 0.875; }
+    100% { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    12.5% { opacity: 0.875; }
+    25% { opacity: 0.75; }
+    37.5% { opacity: 0.625; }
+    50% { opacity: 0.5; }
+    62.5% { opacity: 0.625; }
+    75% { opacity: 0.75; }
+    87.5% { opacity: 0.875; }
+    100% { opacity: 1; }
+}
+
+/* vars used from JavaScript to control the 'frequency spectrum' display */
+.tinyrsid {
+	--spectrum-top: 2;
+	--spectrum-left: 2;
+	--spectrum-width: 317;
+	--spectrum-height: 117;
+	
+	--spectrum-barType: 0;
+	--spectrum-barSpacing: 10;
+	--spectrum-barWidth: 8;
+	--spectrum-barHeigth: 2;
+
+	--spectrum-capsColor: #b75b4e;
+
+	--spectrum-colors: ['0xF6D565','0xF6D565', '0x26D565']; /* green */
+/*	--spectrum-colors: ['0xF6D565', '0xF6D565', '0x2625D5'];*/
+/*	--spectrum-colors: ['0xF6D565', '0xF62565']; // red
+	--spectrum-colors: ['0xF6D565', '0x2625D5']; // blue */
+}
+
+.sid-wrapper-div {
+	position: relative;
+	display:inline-block;
+	background-color: #ffffff; 
+    width: 320px;
+	height: 140px;
+}
+
+.sid-player-div {
+	position: relative;
+	display:inline-block;
+	background-color: #ffffff; 
+    width: 320px;
+	height: 120px;
+	
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+	
+	z-index:1;
+}
+
+.spectrumCanvas {
+	width: var(--spectrum-width);
+	height: var(--spectrum-height);
+}
+
+.spectrumClass {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 0.38;
+	z-index:-1;	
+}
+
+.tinyrsid-container, .tinyrsid .tinyrsid-controls{
+	display                : -ms-flexbox;
+    display                : -webkit-flex;
+    display                : flex;
+	flex-wrap: nowrap;
+	-webkit-box-pack       : flex-start;
+    -moz-box-pack          : flex-start;
+    -ms-flex-pack          : flex-start;
+    -webkit-justify-content: flex-start;
+    justify-content        : flex-start;
+	
+    -webkit-box-align      : center;
+    -moz-box-align         : center;
+    -ms-flex-align         : center;
+    -webkit-align-items    : center;
+    align-items            : center;
+	    
+	max-width:
+}
+
+.tinyrsid-container, .tinyrsid .tinyrsid-controls2{
+	display                : -ms-flexbox;
+    display                : -webkit-flex;
+    display                : flex;
+	flex-direction: column; 
+	flex-wrap: nowrap;
+	-webkit-box-pack       : flex-start;
+    -moz-box-pack          : flex-start;
+    -ms-flex-pack          : flex-start;
+    -webkit-justify-content: flex-start;
+    justify-content        : flex-start;
+	
+    -webkit-box-align      : center;
+    -moz-box-align         : center;
+    -ms-flex-align         : center;
+    -webkit-align-items    : center;
+    align-items            : center;
+	    
+	max-width:
+}
+
+.tinyrsid .tinyrsid-controls2 span{
+    display: block;
+
+	font-family: 'Open Sans', arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size:0.8em;
+	font-weight:bold;
+
+	color: black;
+	margin:0px;	
+}	
+
+.tinyrsid .tinyrsid-controls-wrapper{
+	position: absolute;
+	display:block;
+	top: 80px;
+	left: 15px;
+	z-index:10;
+}
+
+.tinyrsid .tinyrsid-controls2-wrapper{
+	position: absolute;
+	display:block;
+	top: 15px;
+	left: 275px;
+	z-index:4;
+}	
+
+.tinyrsid .tinyrsid-meta{
+	position: absolute;
+	display:block;
+	top: 10px;
+	left: 15px;
+
+	/*margin between the content rows*/
+	margin-bottom:0px;
+	z-index:2;
+}	
+
+.tinyrsid .tinyrsid-meta span{
+    display: block;
+
+	font-family: 'Open Sans', arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size:0.9em;
+	font-weight:bold;
+	
+	color: black;
+}	
+
+.tinyrsid-container{
+	margin-bottom:20px;
+	max-width:330px;
+}
+.tinyrsid-controls{
+	max-width:252px;
+}
+
+.tinyrsid-volume{
+	margin:0 10px;
+	max-width:110px;
+}
+
+.tinyrsid-progress-bar {
+	max-width:40px;
+	min-width:40px;
+}
+
+.tinyrsid-volume{
+	max-width:50px;
+	min-width:50px;
+}
+.tinyrsid button {
+	min-width:42px;
+	min-height:29px;
+	background-position:left center;
+	background-repeat: no-repeat;
+	margin:3px;
+	padding:0;
+	outline-width:0;
+	border-width:0;
+	cursor: pointer;
+    box-shadow: 0 0 0 1pt #bdc3c7;
+	z-index:10;
+}
+.tinyrsid .tinyrsid-controls2 button {
+	min-width:28px;
+	min-height:13px;
+	background-position:left center;
+	background-repeat: no-repeat;
+	padding:0;
+	outline-width:0;
+	border-width:0;
+	cursor: pointer;
+	margin:1px;
+    box-shadow: 0 0 0 1pt #bdc3c7;
+	z-index:10;
+}
+
+.tinyrsid .tinyrsid-up:hover, .tinyrsid .tinyrsid-down:hover,
+.tinyrsid .tinyrsid-play:focus, .tinyrsid .tinyrsid-stop:focus {
+	background-position: right center;
+}
+
+.tinyrsid .tinyrsid-info{
+	background-image: url('../icons/info.png');
+	position: absolute;
+	display:block;
+	top: 102px;
+	left: 300px;
+	z-index:10;
+
+	min-width:12px;
+	min-height:12px;
+	background-position:left center;
+	background-repeat: no-repeat;
+	padding:0;
+	outline-width:0;
+	border-width:0;
+	cursor: pointer;
+	margin:1px;
+}
+
+.tinyrsid-info:hover:after{
+    content: "Tiny\'R\'Sid: Commodore C64 music player (C) 2016 J\0000FCrgen Wothke";
+	float: right;
+	display: inline;
+	background: #333;
+	background: rgba(255,255,255,0.9);
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	top: -70px;
+	color: #000;
+	left: -290px;
+	padding: 5px 15px;
+	position: absolute;
+	width: 320px;
+	height: 60px;
+}
+.tinyrsid-info:hover:before{
+    float: right;
+	display: inline;
+	
+	width: 0; 
+	height: 0; 
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid black;	
+	
+	top: -10px;
+	content: "";
+	left: 0px;
+	position: relative;
+}
+
+.tinyrsid .tinyrsid-up{
+	background-image: url('../icons/up_s2.png');
+}
+.tinyrsid .tinyrsid-down{
+	background-image: url('../icons/down_s2.png');
+}
+.tinyrsid .tinyrsid-play{
+	background-image: url('../icons/play_s.png');
+}
+.tinyrsid .tinyrsid-play.isPlaying{
+	background-image: url('../icons/pause_s.png');
+}
+.tinyrsid .tinyrsid-stop{
+	background-image: url('../icons/stop_s.png');
+}
+
+/*progressbar range*/
+.tinyrsid .ui-progressbar{
+	background-color: #bdc3c7;
+	border-radius:1px;
+	height:0.4em;
+	cursor: pointer;
+}
+/*completed part of progressbar*/
+.tinyrsid .ui-progressbar .ui-progressbar-value{
+	background-color: #fdc3c7;
+	border-radius:1px;
+	height:0.4em;
+	cursor: pointer;
+}
+
+
+.ui-slider {
+    position: relative;
+    text-align: left
+}
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: default;
+    -ms-touch-action: none;
+    touch-action: none
+}
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    background-position: 0 0
+}
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range {
+    filter: inherit
+}
+.ui-slider-horizontal {
+    height: .8em
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.3em;
+    margin-left: -.6em
+}
+.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%
+}
+.ui-slider-horizontal .ui-slider-range-min {
+    left: 0
+}
+.ui-slider-horizontal .ui-slider-range-max {
+    right: 0
+}
+
+.tinyrsid .tinyrsid-volume{
+	background-color: #bdc3c7;
+	border-radius:5px;
+	height:0.4em;
+	cursor: pointer;
+	margin-left:2px;
+}
+
+.tinyrsid .ui-slider-horizontal .ui-slider-handle {
+	top: -.25em;
+	margin-left: -.6em;
+	
+	min-width:12px;
+	min-height:12px;
+	background-color:transparent;
+	background-image: url('../icons/circle_s.png');
+	background-repeat: no-repeat;
+	top:-0.25em;
+	outline-width:0;
+	cursor: pointer;
+	border:0;
+}
+
+.tinyrsid .tinyrsid-time-current, .tinyrsid .tinyrsid-time-total{	
+	font-family: 'Open Sans', arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size:0.8em;
+	font-weight:bold;
+	
+	color: black;
+	margin:auto 5px;
+}
+
+.tinyrsid .tinyrsid-speaker{
+	margin-right: 0px;
+	min-width:16px;
+	min-height:16px;
+	max-width:16px;
+	background-repeat: no-repeat;
+	background-image: url('../icons/speaker_orig_s.png');	
+}
+
+
+/* playlist related stuff.. */
+ 
+.musicIcon {
+	background-image: url('../icons/music.png');
+	width:16px;
+	height:16px;
+    top: 3px;
+	position:relative;
+
+}
+
+.playlist-dropdown {
+    /* Size and position */
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+    padding: 2px 10px;
+
+    /* Styles */
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    cursor: pointer;
+    outline: none;
+
+    /* Font settings */
+    font-weight: normal;
+    color: black;
+ /*   color: #8AA8BD;*/
+	
+	z-index:13;
+}
+
+.playlist-dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #8aa8bd transparent;
+}
+
+.playlist-dropdown .dropdown {
+  /* Size & position */
+    position: absolute;
+    top: 140%;
+    left: 0;
+    right: 0;
+
+    /* Styles */
+    background: white;
+    border-radius: inherit;
+    border: 1px solid rgba(0,0,0,0.17);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    font-weight: normal;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    list-style: none;
+
+    /* Hiding */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* triangle attached to opened dropdown */
+.playlist-dropdown .dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: #fff transparent;    
+}
+
+/* background of triangle attached to opened dropdown */
+.playlist-dropdown .dropdown:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 13px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1) transparent;    
+}
+
+.playlist-dropdown .dropdown li {
+	border:0;
+    padding: 3px 0px;
+}
+
+/* lines in dropdown */
+.playlist-dropdown .dropdown li a {
+    display: block;
+    padding: 0px 10px;
+    text-decoration: none;
+    color: #8aa8bd;
+    border-bottom: 0px solid #e6e8ea;	/* underscore */
+    border-top: 0px solid #e6e8ea;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.playlist-dropdown .dropdown li i {
+    float: right;
+    color: inherit;
+}
+
+.playlist-dropdown .dropdown li:first-of-type a {
+    border-radius: 7px 7px 0 0;
+}
+
+.playlist-dropdown .dropdown li:last-of-type a {
+    border: none;
+    border-radius: 0 0 7px 7px;
+}
+
+/* Hover state */
+.playlist-dropdown .dropdown li:hover a {
+	background: rgba(246,213,101,0.5)
+	 
+}
+
+/* Active state */
+.playlist-dropdown.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* No CSS3 support */
+.no-opacity       .playlist-dropdown .dropdown,
+.no-pointerevents .playlist-dropdown .dropdown {
+    display: none;
+    opacity: 1; /* If opacity support but no pointer-events support */
+    pointer-events: auto; /* If pointer-events support but no pointer-events support */
+}
+
+.no-opacity       .playlist-dropdown.active .dropdown,
+.no-pointerevents .playlist-dropdown.active .dropdown {
+    display: block;
+}
+
+/* for admin GUI */
+.donate
+{
+    float: right;
+	display: inline;
+	position: relative;
+	text-decoration: none;
+	top: 0px;
+	left: 0px;
+	padding: 0px 0px;
+	z-index: 101;
+}
+.donate:hover
+{
+    float: right;
+	display: inline;
+	position: relative;
+	text-decoration: none;
+	top: 0px;
+	left: 6px;
+	padding: 0px 0px;
+
+}
+.donate:hover:after
+{
+    float: right;
+	display: inline;
+	background: #333;
+	background: rgba(254,233,192,.9);
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	top: -5px;
+	color: #000;
+	content: attr(alt);
+	left: -280px;
+	padding: 10px 10px;
+	position: absolute;
+	z-index: 102;
+	width: 250px;
+}
+.donate:hover:before
+{
+    float: right;
+	display: inline;
+	border: solid;
+	border-color: transparent black;
+	border-width: 6px 0px 6px 6px;
+	top: 8px;
+	content: "";
+	left: -100px;
+	position: relative;
+	z-index: 102;
+}
+
